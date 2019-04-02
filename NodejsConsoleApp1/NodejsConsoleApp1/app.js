@@ -26,3 +26,23 @@ var car2 = new Car('White', 'Mercedes');
 
 console.log(car1.carDetails()); // result: Black Mustang car.
 console.log(car2.carDetails()); // result: White Mercedes car.
+
+// New way to create a class as a function
+function Animal(name, color)
+{
+    this.name = name;
+    this.color = color;
+}
+
+// Using prototype here
+Animal.prototype.getDetails = function () // or Animal.prototype.getDetails() { Definition goes here }
+{
+    return this.color + ' ' + this.name;
+}
+
+var dog = Animal('Dog', 'White');
+var cat = Animal('Cat', 'Black');
+
+console.log(dog.getDetails()); // result: White Dog
+console.log(cat.getDetails()); // result: Black Cat
+
