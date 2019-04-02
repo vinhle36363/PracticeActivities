@@ -125,3 +125,39 @@ hoist = 'The variable has been hoisted.';
 // Because of this, we can use variables before we declare them. However, we have to be careful because the hoisted variable is initialised with a value of undefined. 
 // The best option would be to declare and initialise our variable before use.
 
+// ************SCOPE***************
+// Global vs Local
+// Describing the accessibility of variables, functions, and objects during runtime of a particular part of your code.
+
+// Global scope
+var myName = "Vinh on global";
+(function () {
+    console.log(myName); // output: Vinh on global
+})();
+
+// Local scope
+(function () {
+    var myOtherName = 'Tin on local';
+    console.log(myOtherName); // output: Tin on local 
+})();
+
+console.log(myOtherName); // output: Reference-Error myOtherName is not defined
+
+// Affected by ES6 with let and const type variables (in used of replacing var)
+if (true)
+{
+    // var - global scope
+    var nationality = 'Vietnam';
+    // let - local scope, value can be changed during execution
+    let age = '22';
+    // const - local scope, value can't be changed during execution
+    const name = 'Vinh';
+}
+
+// Variable age and name will be dead after the if statement code executed, however the nationality still exist as long as your application live.
+// age and name only live as long as the function are called and executed.
+console.log(nationality); // output: Vietnam
+console.log(age);   // output: Uncaught ReferenceError: age is not defined 
+console.log(name);  // output: Uncaught ReferenceError: name is not defined 
+
+
