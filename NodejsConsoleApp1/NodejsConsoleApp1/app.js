@@ -56,3 +56,25 @@ console.log(cat.getDetails()); // result: Black Cat
     ();
 
 // if we try console.log(greeting) here the error will be: greeting is not defined
+
+// JavaScript Closures
+//  - Combinaiton of a function and lexial environment within that function was declared
+//  - Easier words: function that has access to the outter(enclosing) function variables
+//  - Closures has 3 scope chain: access to it own scope(variables defined between its curly brackets),
+//                                       to the outer function's variable,
+//                                       to the global variables
+function Greeting(name)
+{
+    var displayGreeting = function (greeting)
+    {
+        console.log(greeting + ' ' + name);
+    }
+    return displayGreeting;
+}
+
+var sayHi = Greeting('Vinh'); // Passing value to variable name of class Greeting.
+
+// Passing value to variable greeting of function displayGreeting.
+// The displayGreeting function wil have access to the variables in the Greeting function scope even after the
+// Greeting function has executed
+sayHi('Hi '); // result: Hi Vinh
