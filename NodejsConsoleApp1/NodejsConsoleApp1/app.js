@@ -110,3 +110,18 @@ myModule.publicMethod();                        // normal output: "Vinh informat
 console.log(myModule._privateProperty);         // undefined because we're using Closures
 myModule._privateMethod();                      // TypeError this function is protected by the Closures
 
+// **********Hoisting************
+// A JS mechanism where variables and function declarations are moved to the top of their scope before any execution.
+// JavaScript only hoists declarations, not initialisation. 
+// No matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
+console.log(hoist); // Output: undefined
+var hoist = 'The variable has been hoisted.';
+
+// We expected the result of the log to be: ReferenceError: hoist is not defined, but instead, its output is undefined.
+// What actually the code does:
+var hoist;
+console.log(hoist); // Output: undefined
+hoist = 'The variable has been hoisted.';
+// Because of this, we can use variables before we declare them. However, we have to be careful because the hoisted variable is initialised with a value of undefined. 
+// The best option would be to declare and initialise our variable before use.
+
