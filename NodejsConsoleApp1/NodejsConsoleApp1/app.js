@@ -46,3 +46,13 @@ var cat = Animal('Cat', 'Black');
 console.log(dog.getDetails()); // result: White Dog
 console.log(cat.getDetails()); // result: Black Cat
 
+// ES6 IIFE (Immediately Invoked Function Expression)
+// Run ASA it defined
+// Obtaining data privacy because any variables declared within the IIFE CANNOT be accessed by the outside world
+(function () {
+    var greeting = "hello";
+    console.log(greeting); // print out "hello" on the console
+})
+    ();
+
+// if we try console.log(greeting) here the error will be: greeting is not defined
