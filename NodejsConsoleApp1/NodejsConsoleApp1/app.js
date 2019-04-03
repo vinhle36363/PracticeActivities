@@ -252,3 +252,38 @@ function sell(money, price, name) {
 console.log(sell(12, 12, 'Tin')); // output: You has paid enough money. Thank you Tin
 console.log(sell(9, 8, 'Vinh')); // output: Here is your change $1. Thank you Vinh
 console.log(sell(7, 10, 'Jake')); // output: Sorry Jake, you still need to pay $3 more to buy this stuff.
+
+// *******************Apply/Call/Bind methods******************
+// Common methods of many classes 
+var student1 = {
+    additionalSubject = "France";
+}
+
+var student2 = {
+    additionalSubject = "Vietnamese";
+}
+
+function totalSubject(subj2, subj3, subj4)
+{
+    return 'Total subjects: ' + subj2 + ', ' + subj3 + ', ' + subj4 + ', ' + this.additionalSubject; 
+}
+
+var arr = ['Math', 'Physics', 'Chemistry'];
+
+// Call method
+// Using call method we can bound student1 or student2 to totalSubject function with the property additionalSubject
+console.log(totalSubject.call(student1, 'Math', 'Physics', 'Chemistry')); // output: Total subjects: Math, Physics, Chemistry, France
+console.log(totalSubject.call(student2, 'Math', 'Physics', 'Chemistry')); // output: Total subjects: Math, Physics, Chemistry, Vietnamese
+
+// Apply method
+// Using apply method we also can pass an array as an argument
+console.log(totalSubject.apply(student1, arr)); // output: Total subjects: Math, Physics, Chemistry, France
+console.log(totalSubject.apply(student2, arr)); // output: Total subjects: Math, Physics, Chemistry, Vietnamese
+
+// Bind method
+// Bind method return method instance instead of result value
+var bound = totalSubject.bind(student1);
+console.log(bound('Math', 'Physics', 'Chemistry')); // output: Total subjects: Math, Physics, Chemistry, France
+var bound = totalSubject.bind(student2);
+console.log(bound('Math', 'Physics', 'Chemistry')); // output: Total subjects: Math, Physics, Chemistry, Vietnamese
+
