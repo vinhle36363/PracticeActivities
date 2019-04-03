@@ -328,4 +328,26 @@ class Student
 // Defer: <script defer src='yourjsfile.js'> - parse as defer
 // <script defer> tag occurs, JS Engine will parse the all html code and after that only executes the JS Code
 
-
+// *****************Promises********************
+// Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value
+// Used to avoid chainning callbacks
+// Whenever we using Asynchronous, we need to handle an operation as one of the way would be using promieses.
+// Promises have 3 states: 
+//      - Pending: Initial state, neither fullfilled or rejected
+//      - fullfiled: operation complete successfully
+//      - rejected: operation failed.
+var askMom = function () {
+    console.log('before asking Mom'); // log before
+    willIGetNewPhone
+        .then(showOff) // chain it here
+        .then(function (fulfilled) {
+            console.log(fulfilled); // will output: 'Hey friend, I have a new black Samsung phone.'
+        })
+        .catch(function (error) {
+            console.log(error.message); // will output: 'mom is not happy'
+        });
+    console.log('after asking mom'); // log after
+}
+// ouput on fullfilled:   before asking Mom
+//                        after asking mom
+//                        Hey friend, I have a new black Samsung phone.
