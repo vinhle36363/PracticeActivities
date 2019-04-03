@@ -351,3 +351,25 @@ var askMom = function () {
 // ouput on fullfilled:   before asking Mom
 //                        after asking mom
 //                        Hey friend, I have a new black Samsung phone.
+
+// ****************Async and Await*********************
+// Used in ES7
+// Comparing to Promises, it is a shortcut to reach the same destination. 
+// It helps developer to implement functional programming in JavaScript, and increases the code readability, making JavaScript more enjoyable.
+async () => {
+    try {   // Fetching user
+        // Declare it as the constant User
+        const User = await client.fetchUser(id);
+        // Fetch a member with the User
+        const member = await guild.fetchmember(User);
+        // Add the role to the member
+        const role = guild.roles.find(r => r.name === "Idiot Subscribers");
+        await member.addRole(role);
+        await channel.send("Success!");
+    } catch (e) {
+        // If ONE of the promises fail
+        // The code stops executing the rest of the methods inside the try's block and will run the block inside catch,
+        // with the Error object, and will send an error to the console.
+        console.error(e);
+    }
+}
