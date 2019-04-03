@@ -181,4 +181,33 @@ var studentEvaluation = function (name)
 console.log(studentEvaluation('Vinh')('CST')(80)); // output: Vinh of CST pass the course with the grade of 80
 console.log(studentEvaluation('John')('CST')(30)); // output: John of CST fail the course with the grade of 30
 
+// ***********Memoization*************
+// Programming technique which attemp to boost function's performance by caching its previously computed results.
+// Each time momoization function is called, its parameters are used to index the cache.
+// **Important**: If the data is present, then it can be returned, without executing the entire function. 
+//              However, if the data is not cached, then the function is executed, and the result is added to the cache.
+// Help to modularity and reusable of the code
+const memoizedAdd = () => {
+    // Creating cache array
+    let cache = {};
+    return (value) => {
+        // Checking whether the value is in the cache or not
+        // If there is, return the number inside cache at index value
+        if (value in cache) {
+            console.log('Fetching from cache');
+            return cache[value];
+        }
+        // Calculating the result and put it into cache at index value if there was nothing inside cache
+        else {
+            console.log('Calculating result');
+            let result = value + 10;
+            cache[value] = result;
+            return result;
+        }
+    }
+}
+// returned function from memoizedAdd
+const newAdd = memoizedAdd();
+console.log(newAdd(10)); //output: Calculating result /n 20
+console.log(newAdd(10)); //output: Fetching from cache /n 20
 
