@@ -314,3 +314,18 @@ class Student
     }
 }
 
+// *********************Asynchronous Js***************************
+// In Broswer JS engine V8
+// Synchronous: <script src='yourjsfile.js'> - this is default
+//  <script > tag occurs, JS engine will download the code and execute that code and after that only parsing the below html code
+//  Generally Synchronous is a blocking script execution.
+
+// Asynchronous: <script async src='yourjsfile.js'> - parse as asynchronous
+//  <script async> tag occurs, while downloading the code JS engine will parse the html and once. 
+//  If JS code get’s downloaded pause the parsing and back into the JS Code Execution
+//  Generally Asynchronous is an Non - blocking script execution.
+
+// Defer: <script defer src='yourjsfile.js'> - parse as defer
+// <script defer> tag occurs, JS Engine will parse the all html code and after that only executes the JS Code
+
+
