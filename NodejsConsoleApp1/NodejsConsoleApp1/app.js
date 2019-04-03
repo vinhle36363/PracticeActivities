@@ -356,6 +356,7 @@ var askMom = function () {
 // Used in ES7
 // Comparing to Promises, it is a shortcut to reach the same destination. 
 // It helps developer to implement functional programming in JavaScript, and increases the code readability, making JavaScript more enjoyable.
+// In ES8 Async / Await is that, you can call multiple AsyncFunctions, and catch them all once.As in the following function:
 async () => {
     try {   // Fetching user
         // Declare it as the constant User
@@ -363,7 +364,7 @@ async () => {
         // Fetch a member with the User
         const member = await guild.fetchmember(User);
         // Add the role to the member
-        const role = guild.roles.find(r => r.name === "Idiot Subscribers");
+        const role = guild.roles.find(r => r.name === "Smart Subscribers");
         await member.addRole(role);
         await channel.send("Success!");
     } catch (e) {
