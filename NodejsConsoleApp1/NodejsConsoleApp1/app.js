@@ -211,3 +211,44 @@ const newAdd = memoizedAdd();
 console.log(newAdd(10)); //output: Calculating result /n 20
 console.log(newAdd(10)); //output: Fetching from cache /n 20
 
+// ************Callback function******************
+// Functions being call inside another function as arguments to complete a routine or action
+// This function wil says thank to customer
+function sayThanks(name) {
+    console.log('Thank you ' + name);
+}
+
+// This function will check whether customer has paid enough money or not
+function isMoneyEnough(amount) {
+    if (amount > 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+// This function will call the above 2 function in order to complete an action
+function sell(money, price, name) {
+    let amount = 0;
+    amount = price - money;
+    // Checking the price and money
+    let enough = isMoneyEnough(amount);
+    // If not enough, ask customer to pay more
+    if (!enough) {
+        let moneyMissing = price - money;
+        console.log('Sorry ' + name + ', you still need to pay $' + moneyMissing + ' more to buy this stuff.');
+    } else {
+        if (price === money) {      // If payment is enough say thanks
+            console.log('You has paid enough money.');
+            sayThanks(name);
+        } else {                    // If payment is more than enough, give back change and say thanks
+            let change = money - price;
+            console.log('Here is your change $' + change + '.');
+            sayThanks(name);
+        }
+    }
+}
+
+console.log(sell(12, 12, 'Tin')); // output: You has paid enough money. Thank you Tin
+console.log(sell(9, 8, 'Vinh')); // output: Here is your change $1. Thank you Vinh
+console.log(sell(7, 10, 'Jake')); // output: Sorry Jake, you still need to pay $3 more to buy this stuff.
