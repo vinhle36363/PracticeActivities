@@ -160,4 +160,25 @@ console.log(nationality); // output: Vietnam
 console.log(age);   // output: Uncaught ReferenceError: age is not defined 
 console.log(name);  // output: Uncaught ReferenceError: name is not defined 
 
+// ************Currying************
+// Is a technique of evaluating function with multiple arguments into sequence of function with single argument.
+// This helps to create a higher order function, extremly helpful in event handling 
+var studentEvaluation = function (name)
+{
+    return function (program)
+    {
+        return function (grade)
+        {
+            if (grade >= 50) {
+                return name + ' of ' + program + ' pass the course with the grade of ' + grade;
+            } else {
+                return name + ' of ' + program + ' fail the course with the grade of ' + grade;
+            }
+        }
+    }
+}
+
+console.log(studentEvaluation('Vinh')('CST')(80)); // output: Vinh of CST pass the course with the grade of 80
+console.log(studentEvaluation('John')('CST')(30)); // output: John of CST fail the course with the grade of 30
+
 
