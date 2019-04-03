@@ -287,3 +287,30 @@ console.log(bound('Math', 'Physics', 'Chemistry')); // output: Total subjects: M
 var bound = totalSubject.bind(student2);
 console.log(bound('Math', 'Physics', 'Chemistry')); // output: Total subjects: Math, Physics, Chemistry, Vietnamese
 
+// ************************Polymorphism******************************
+// OOP (Object Oriented Programming)
+// Taking advantages of inheritance by overriding shared object behaviours
+var student = new Student('Vinh');
+
+// override function
+// this method will be executed
+Student.prototype.getName() {
+    return this.name.toUpperCase();
+}
+
+console.log(student.getName()); // output: VINH instead of Vinh
+
+// Class Student
+class Student
+{
+    constructor(name)
+    {
+        this.name = name;
+    }
+
+    getName()
+    {
+        return this.name;
+    }
+}
+
